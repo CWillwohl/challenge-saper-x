@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->prefix('/lista-telefonica')->as('phoneBook.')->group(function () {
+Route::prefix('/lista-telefonica')->as('phoneBook.')->group(function () {
     Route::get('/', [PhoneBookController::class, 'index'])->name('index');
     Route::get('/cadastrar-lista', [PhoneBookController::class, 'create'])->name('create');
     Route::post('/store', [PhoneBookController::class, 'store'])->name('store');

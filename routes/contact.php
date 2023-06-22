@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth')->as('contact.')->group(function () {
+Route::as('contact.')->group(function () {
     Route::get('/agenda/{phoneBook}/listar-contatos', [ContactController::class, 'index'])->name('index');
     Route::get('/agenda/{phoneBook}/cadastrar-contato', [ContactController::class, 'create'])->name('create');
     Route::post('/agenda/{phoneBook}/store', [ContactController::class, 'store'])->name('store');

@@ -23,8 +23,8 @@ class UpdateContactRequest extends FormRequest
     {
         return [
             'birthday'      => ['required', 'date'],
-            'email'         => ['required', 'email', 'max:255', 'unique:contacts,email,'.$this->contact->id],
-            'phone'         => ['required', 'string', 'min:11', 'max:11', 'unique:contacts,phone,'.$this->contact->id],
+            'email'         => ['required', 'email', 'max:255'],
+            'phone'         => ['required', 'string', 'min:11', 'max:11'],
             'name'          => ['required', 'string', 'max:255'],
         ];
     }
