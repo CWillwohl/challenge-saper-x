@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PhoneBook\StorePhoneBookRequest;
-use App\Http\Requests\PhoneBook\UpdatePhoneBookRequest;
+use App\Http\Requests\Api\PhoneBook\ApiStorePhoneBookRequest;
+use App\Http\Requests\Api\PhoneBook\ApiUpdatePhoneBookRequest;
 use App\Models\PhoneBook;
 use App\Services\PhoneBookService;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class ApiPhoneBookController extends Controller
 {
     public function __construct(
         private PhoneBookService $phoneBookService
-    ) {}
+    ) {
+    }
 
     public function index(): JsonResponse
     {
@@ -23,8 +24,9 @@ class ApiPhoneBookController extends Controller
         return response()->json(['phoneBooks' => $phoneBooks]);
     }
 
-    public function store(StorePhoneBookRequest $storePhoneBookRequest): JsonResponse
+    public function store(ApiStorePhoneBookRequest $storePhoneBookRequest): JsonResponse
     {
+        
         $data = $storePhoneBookRequest->validated();
 
         $phoneBook = $this->phoneBookService->create($data);
@@ -37,7 +39,7 @@ class ApiPhoneBookController extends Controller
         return response()->json(['phoneBook' => $phoneBook]);
     }
 
-    public function update(UpdatePhoneBookRequest $updatePhoneBookRequest, PhoneBook $phoneBook): JsonResponse
+    public function update(ApiUpdatePhoneBookRequest $updatePhoneBookRequest, PhoneBook $phoneBook): JsonResponse
     {
         $data = $updatePhoneBookRequest->validated();
 
