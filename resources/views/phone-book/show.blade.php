@@ -17,17 +17,17 @@
                 <hr class="w-full my-2">
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="DDD">DDD</label>
+                    <label for="DDD">DDD:</label>
                     <input type="text" name="DDD" id="DDD" disabled class="w-full cursor-not-allowed bg-gray-100 rounded shadow" value="{{ $phoneBook->DDD }}">
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="name">Nome</label>
+                    <label for="name">Nome da Agenda: </label>
                     <input type="text" name="name" id="name" disabled class="w-full cursor-not-allowed bg-gray-100 rounded shadow" value="{{ $phoneBook->name }}">
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="city">E-mail</label>
+                    <label for="city">Cidade: </label>
                     <input type="text" name="city" id="city" disabled class="w-full cursor-not-allowed bg-gray-100 rounded shadow" value="{{ $phoneBook->city }}">
                 </div>
 
@@ -41,6 +41,7 @@
                         @method('delete')
                         <button type="submit" href="{{ route('phoneBook.destroy', $phoneBook) }}" class="bg-red-500 hover:bg-red-600 duration-300 text-white p-4 uppercase">Deletar essa agenda</button>
                     </form>
+                    <a href="{{ route('contact.index', $phoneBook) }}" class="bg-sky-500 hover:bg-sky-600 duration-300 text-white p-4 uppercase">Visualizar os contatos</a>
                     <a href="{{ route('phoneBook.edit', $phoneBook) }}" class="bg-zinc-800 hover:bg-zinc-900 duration-300 text-white p-4 uppercase">Editar essa agenda</a>
                 </div>
             </div>

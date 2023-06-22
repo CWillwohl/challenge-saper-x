@@ -19,8 +19,8 @@
                 <thead class="bg-zinc-800 text-gray-100">
                     <tr>
                         <th class="border border-zinc-800 p-4">DDD</th>
-                        <th class="border border-zinc-800 p-4">Name</th>
-                        <th class="border border-zinc-800 p-4">City</th>
+                        <th class="border border-zinc-800 p-4">Nome da Agenda</th>
+                        <th class="border border-zinc-800 p-4">Cidade</th>
                         <th class="border border-zinc-800 p-4">Ações</th>
                     </tr>
                 </thead>

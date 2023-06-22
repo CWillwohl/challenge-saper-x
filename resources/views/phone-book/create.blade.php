@@ -22,7 +22,7 @@
                 @method('post')
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="DDD">DDD<span class="text-zinc-800 font-semibold"> (2 caracteres)</span></label>
+                    <label for="DDD">DDD: <span class="text-zinc-800 font-semibold"> (2 caracteres)</span></label>
                     <input type="number" name="DDD" id="DDD" class="w-full rounded shadow" value="{{ old('name') }}">
                     @error('DDD')
                         <span class="text-sm text-red-500">{{ $message }}</span>
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="name">Name</label>
+                    <label for="name">Nome da Agenda: </label>
                     <input type="text" name="name" id="name" class="w-full rounded shadow" value="{{ old('name') }}">
                     @error('name')
                         <span class="text-sm text-red-500">{{ $message }}</span>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="w-full flex flex-col gap-2">
-                    <label for="city">City</label>
+                    <label for="city">Cidade: </label>
                     <input type="text" name="city" id="city" class="w-full rounded shadow" value="{{ old('city') }}">
                     @error('city')
                         <span class="text-sm text-red-500">{{ $message }}</span>
