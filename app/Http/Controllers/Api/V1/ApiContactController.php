@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contact\StoreContactRequest;
 use App\Http\Requests\Contact\UpdateContactRequest;
+use App\Models\Contact;
 use App\Models\PhoneBook;
 use App\Services\ContactService;
 use Illuminate\Http\JsonResponse;
@@ -22,14 +23,15 @@ class ApiContactController extends Controller
         return response()->json(['contacts' => $contacts, 'phoneBook' => $phoneBook]);
     }
 
-    public function store(StoreContactRequest $storeContactRequest, PhoneBook $phoneBook): JsonResponse
+    public function store(StoreContactRequest $storeContactRequest, $phoneBookId): JsonResponse
     {
+
         $data = $storeContactRequest->validated();
-        $data['phone_book_id'] = $phoneBook->id;
+        $data['phone_book_id'] = $phoneBookId;
 
         $contact = $this->contactService->create($data);
 
-        return response()->json(['contact' => $contact], 201);
+        return response()->json(['contact' => $contact], 200);
     }
 
     public function update(UpdateContactRequest $updateContactRequest, PhoneBook $phoneBook, Contact $contact): JsonResponse
