@@ -6,12 +6,18 @@ use App\Http\Requests\Contact\StoreContactRequest;
 use App\Http\Requests\Contact\UpdateContactRequest;
 use App\Models\Contact;
 use App\Models\PhoneBook;
+use App\Services\ContactService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
+
+    public function __construct(
+        private ContactService $contactService,
+    ) {}
+
     public function index(PhoneBook $phoneBook) : View
     {
         $contacts = $phoneBook->contacts()->get();
@@ -29,7 +35,7 @@ class ContactController extends Controller
         $data = $storeContactRequest->validated();
         $data['phone_book_id'] = $phoneBook->id;
 
-        $contact = Contact::create($data);
+        $contact = $this->contactService->create(data: $data);
 
         return redirect()->route('contact.index', compact('contact', 'phoneBook'));
     }
@@ -44,14 +50,14 @@ class ContactController extends Controller
         $data = $updateContactRequest->validated();
         $data['phone_book_id'] = $phoneBook->id;
 
-        $contact->update($data);
+        $this->contactService->update(data: $data, contact: $contact);
 
         return redirect()->route('contact.index', compact('phoneBook'));
     }
 
     public function destroy(PhoneBook $phoneBook, Contact $contact) : RedirectResponse
     {
-        $contact->delete();
+        $this->contactService->destroy(contact: $contact);
 
         return redirect()->route('contact.index', compact('phoneBook'));
     }
