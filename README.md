@@ -1,4 +1,4 @@
-## Programming Challenge ALFASOFT
+## Programming Challenge SaperX
 
 ---
 ### Installation Tutorial
